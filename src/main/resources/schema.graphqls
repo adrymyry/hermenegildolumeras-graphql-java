@@ -1,0 +1,38 @@
+type User {
+    username: String!
+    password: String!
+    email: String!
+}
+
+type Url {
+    id: String!
+    longUrl: String!
+    shortUrl: String!
+    date: String!
+    stats: [Stat]
+    userOwner: String!
+}
+
+type Stat {
+    date: String!
+    userAgent: String!
+    referer: String
+}
+
+type Query {
+    user(username: String!): User
+    url(urlid: String!): Url
+    allUserUrls(username: String!): [Url]
+    allStats(urlid: String!): [Stat]
+}
+
+type Mutation {
+    createUser(username: String!, password: String!, email: String!): User
+    createUrl(longUrl: String!, userOwner: String!): Url
+    addStat(urlid: String!, userAgent: String!, referer: String): Stat
+}
+
+schema {
+    query: Query
+    mutation: Mutation
+}
