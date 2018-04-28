@@ -1,0 +1,68 @@
+mutation createUserAdri {
+  createUser(username: "adri", password: "a", email: "adri@um.es") {
+    username
+  }
+}
+
+mutation createUrlMarca {
+  createUrl(longUrl: "http://www.marca.com", userOwner: "adri") {
+    shortUrl
+  }
+}
+
+mutation createUrlHlum {
+  createUrl(longUrl: "http://www.hlum.com", userOwner: "adri") {
+    shortUrl
+  }
+}
+
+mutation createUrlAs {
+  createUrl(longUrl: "http://www.as.com", userOwner: "adri") {
+    shortUrl
+  }
+}
+
+mutation createUrlUm {
+  createUrl(longUrl: "http://www.um.es", userOwner: "adri") {
+    shortUrl
+  }
+}
+
+mutation createStat {
+  addStat(urlid: "id1", userAgent: "Chrome", referer: "www.as.com") {
+    userAgent
+    referer
+  }
+}
+
+mutation createStat2 {
+  addStat(urlid: "id1", userAgent: "Safari") {
+    userAgent
+    referer
+  }
+
+
+mutation createStat3 {
+  addStat(urlid: "id1", userAgent: "Firefox", referer: "www.um.es") {
+    userAgent
+    referer
+  }
+}
+
+query url {
+  allUserUrls(username: "adri") {
+    shortUrl
+    longUrl
+    stats {
+      userAgent
+      referer
+    }
+  }
+}
+
+query statsid1{
+  allStats(urlid: "id1") {
+    userAgent
+    referer
+  }
+}
